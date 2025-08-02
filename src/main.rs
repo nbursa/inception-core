@@ -22,7 +22,7 @@ async fn main() {
     // Initialize logging
     tracing_subscriber::fmt::init();
 
-    info!("🧠 Starting Inception Memory Server...");
+    info!("Starting Inception Memory Server...");
 
     // Load settings from environment or config file
     let settings = Settings::load().expect("Failed to load configuration");
@@ -47,7 +47,7 @@ async fn main() {
     // Bind address
     let addr: SocketAddr = settings.api_address.parse().expect("Invalid address");
 
-    info!("🚀 HTTP server listening on http://{}", addr);
+    info!("HTTP server listening on http://{}", addr);
 
     // Start server with graceful shutdown
     let listener = tokio::net::TcpListener::bind(addr).await.expect("Failed to bind address");
@@ -58,7 +58,7 @@ async fn main() {
         error!("Server error: {}", e);
     }
 
-    info!("🛑 Inception shut down.");
+    info!("Inception shut down.");
 }
 
 async fn shutdown_signal() {
