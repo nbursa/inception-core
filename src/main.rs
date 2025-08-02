@@ -3,6 +3,7 @@ use std::sync::Arc;
 use tokio::signal;
 use tracing::{error};
 use tracing_subscriber;
+use tracing::info;
 
 mod api;
 mod backends;
@@ -33,12 +34,12 @@ async fn main() {
     let memory_system = Arc::new(MemorySystem::new(backend.clone()));
 
     // Spawn background memory maintenance tasks
-    {
-        let mem_clone = memory_system.clone();
-        tokio::spawn(async move {
-            mem_clone.run_maintenance_tasks().await;
-        });
-    }
+    // {
+    //     let mem_clone = memory_system.clone();
+    //     tokio::spawn(async move {
+    //         mem_clone.run_maintenance_tasks().await;
+    //     });
+    // }
 
     // Create REST API router
     let app = create_http_router(memory_system.clone());
