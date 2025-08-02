@@ -6,7 +6,6 @@ use std::sync::Arc;
 use crate::core::memory::MemorySystem;
 use crate::core::memory_types::RecallQuery;
 use crate::core::memory_types::MemoryToken;
-use tracing::info;
 
 pub fn create_http_router(memory: Arc<MemorySystem>) -> Router {
     Router::new()
