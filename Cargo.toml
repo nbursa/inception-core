@@ -1,0 +1,28 @@
+[package]
+name = "inception"
+version = "0.1.0"
+edition = "2024"
+description = "Modular memory server for cognitive AI systems"
+license = "MIT"
+
+[dependencies]
+tokio = { version = "1.37", features = ["full"] }
+axum = "0.7"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+uuid = { version = "1.6", features = ["v4"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+dotenvy = "0.15"
+time = "0.3"
+tokio-tungstenite = "0.21"
+rocksdb = { version = "0.21", optional = true }
+tonic = { version = "0.11", optional = true }
+prost = { version = "0.12", optional = true }
+
+[features]
+default = []
+grpc = ["tonic", "prost"]
+rocksdb = ["dep:rocksdb"]
+
+[build-dependencies]
