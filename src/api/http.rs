@@ -3,7 +3,8 @@ use axum::{
     Router, Json, extract::State
 };
 use std::sync::Arc;
-use crate::core::memory::{MemorySystem, RecallQuery};
+use crate::core::memory::MemorySystem;
+use crate::core::memory_types::RecallQuery;
 use crate::core::memory_types::MemoryToken;
 use tracing::info;
 

@@ -10,6 +10,7 @@ pub mod core;
 pub mod rpc_client;
 pub mod utils;
 
-pub use core::memory::{MemoryResult, MemorySystem, RecallQuery};
+pub use core::memory::MemorySystem;
 pub use core::memory_store::MemoryBackend;
 pub use core::memory_types::{MemoryEpisode, MemoryFrame, MemoryToken};
+pub use core::memory_types::{MemoryResult, RecallQuery};

@@ -7,15 +7,18 @@ license = "MIT"
 
 [dependencies]
 tokio = { version = "1.37", features = ["full"] }
-axum = "0.7"
+axum = { version = "0.7", features = ["ws"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-uuid = { version = "1.6", features = ["v4"] }
+uuid = { version = "1.6", features = ["v4", "serde"] }
 tracing = "0.1"
 tracing-subscriber = "0.3"
 dotenvy = "0.15"
-time = "0.3"
+time = { version = "0.3", features = ["serde", "formatting", "parsing"] }
 tokio-tungstenite = "0.21"
+async-trait = "0.1"
+reqwest = { version = "0.12", features = ["json"] }
+
 rocksdb = { version = "0.21", optional = true }
 tonic = { version = "0.11", optional = true }
 prost = { version = "0.12", optional = true }
@@ -24,5 +27,3 @@ prost = { version = "0.12", optional = true }
 default = []
 grpc = ["tonic", "prost"]
 rocksdb = ["dep:rocksdb"]
-
-[build-dependencies]
