@@ -1,8 +1,12 @@
-# Inception
+# Inception-Core
+
+! Work in progress
+
+---
 
 > Modular Memory Server for Cognitive AI Systems
 
-**Inception** is a local memory server (cortex) designed for use in agent-based and cognitive systems such as [`egoai`](https://github.com/nbursa) and [`sentience`](https://github.com/nbursa/sentience). It provides structured memory, a query engine, STM/LTM hierarchy, and REST/gRPC/WebSocket interfaces.
+**Inception** is a local memory server (cortex) designed for use in agent-based and cognitive systems such as [`synthamind`](https://github.com/nbursa/synthamind) and [`sentience`](https://github.com/nbursa/sentience). It provides structured memory, a query engine, STM/LTM hierarchy, and REST/gRPC/WebSocket interfaces.
 
 ---
 
@@ -52,20 +56,6 @@ curl -X POST http://localhost:8080/memory/store \
 curl -X POST http://localhost:8080/memory/recall \
   -H "Content-Type: application/json" \
   -d '{"query":"subject=ball AND object=red"}'
-```
-
----
-
-## Module Architecture
-
-```text
-inception/
-├── core/         # STM, LTM, tokens, queries, indexing
-├── backends/     # in-memory, file, rocksdb
-├── api/          # REST, gRPC, WebSocket
-├── rpc_client/   # REST client for agent integration
-├── config/       # .env configuration
-├── utils/        # time, ID generation, encoding
 ```
 
 ---
