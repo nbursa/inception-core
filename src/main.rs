@@ -1,7 +1,7 @@
 use std::net::SocketAddr;
 use std::sync::Arc;
 use tokio::signal;
-use tracing::{info, error};
+use tracing::{error};
 use tracing_subscriber;
 
 mod api;
@@ -49,8 +49,8 @@ async fn main() {
     info!("🚀 HTTP server listening on http://{}", addr);
 
     // Start server with graceful shutdown
-    let server = axum::Server::bind(&addr)
-        .serve(app.into_make_service())
+    let listener = tokio::net::TcpListener::bind(addr).await.expect("Failed to bind address");
+    let server = axum::serve(listener, app.into_make_service())
         .with_graceful_shutdown(shutdown_signal());
 
     if let Err(e) = server.await {
