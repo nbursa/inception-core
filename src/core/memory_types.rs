@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use time::serde::rfc3339;
 use time::OffsetDateTime;
 use uuid::Uuid;
 
@@ -8,6 +9,7 @@ pub struct MemoryToken {
     pub subject: String,
     pub relation: String,
     pub object: String,
+    #[serde(with = "rfc3339")]
     pub timestamp: OffsetDateTime,
     pub tags: Vec<String>,
 }

@@ -23,8 +23,9 @@ async fn store_token(
     State(memory): State<Arc<MemorySystem>>,
     Json(token): Json<MemoryToken>
 ) -> &'static str {
+    tracing::info!("API received token: {:?}", token);
     memory.store_token(token).await;
-    "✅ Stored"
+    "Stored"
 }
 
 async fn recall_memory(

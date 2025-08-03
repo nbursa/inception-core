@@ -1,6 +1,7 @@
 use crate::core::memory_store::MemoryBackend;
 use crate::core::memory_types::{MemoryToken, RecallQuery};
 use std::sync::Arc;
+use tracing::info;
 
 pub struct MemorySystem {
     backend: Arc<dyn MemoryBackend>,
@@ -12,6 +13,7 @@ impl MemorySystem {
     }
 
     pub async fn store_token(&self, token: MemoryToken) {
+        info!("Received token: {:?}", token);
         self.backend.store_token(token).await;
     }
 
