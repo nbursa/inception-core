@@ -16,7 +16,7 @@ pub fn create_http_router(memory: Arc<MemorySystem>) -> Router {
 }
 
 async fn health_check() -> &'static str {
-    "🧠 Inception is alive."
+    "Inception is alive."
 }
 
 async fn store_token(

@@ -1,5 +1,3 @@
-//! gRPC server stub (not active by default)
-
 #[cfg(feature = "grpc")]
 use tonic::{transport::Server, Request, Response, Status};
 #[cfg(feature = "grpc")]
@@ -23,8 +21,6 @@ impl proto::inception_server::Inception for InceptionGrpc {
         &self,
         request: Request<proto::TokenRequest>,
     ) -> Result<Response<proto::GenericReply>, Status> {
-        let token = request.into_inner(); // convert to MemoryToken
-        // TODO: convert token
         Ok(Response::new(proto::GenericReply {
             message: "Stored".into(),
         }))
@@ -34,8 +30,6 @@ impl proto::inception_server::Inception for InceptionGrpc {
         &self,
         request: Request<proto::RecallQuery>,
     ) -> Result<Response<proto::RecallReply>, Status> {
-        let query = request.into_inner(); // convert to RecallQuery
-        // TODO: recall logic
         Ok(Response::new(proto::RecallReply {
             results: vec![],
         }))

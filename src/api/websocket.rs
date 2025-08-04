@@ -15,11 +15,10 @@ pub async fn handle_ws(
 }
 
 async fn handle_socket(mut socket: WebSocket) {
-    info!("📡 WebSocket connection opened.");
+    info!("WebSocket connection opened.");
 
     while let Some(Ok(msg)) = socket.recv().await {
         if let Message::Text(txt) = msg {
-            // Echo message (or respond with memory status)
             if let Err(e) = socket.send(Message::Text(format!("Echo: {}", txt))).await {
                 error!("WebSocket send error: {}", e);
                 break;
@@ -27,5 +26,5 @@ async fn handle_socket(mut socket: WebSocket) {
         }
     }
 
-    info!("📴 WebSocket connection closed.");
+    info!("WebSocket connection closed.");
 }

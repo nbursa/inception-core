@@ -8,7 +8,6 @@ impl QueryEngine {
     }
 
     pub fn run(&self, query: &RecallQuery, tokens: &[MemoryToken]) -> Vec<MemoryToken> {
-        // Very naive DSL: "subject=ball AND object=red"
         let conditions: Vec<_> = query
             .query
             .split("AND")

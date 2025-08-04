@@ -1,7 +1,6 @@
 use dotenvy::dotenv;
 use std::env;
 
-/// Configuration settings for Inception memory server
 pub struct Settings {
     pub api_address: String,
     pub backend: String,
