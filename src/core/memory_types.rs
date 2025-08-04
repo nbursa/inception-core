@@ -5,6 +5,7 @@ use uuid::Uuid;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct MemoryToken {
+    #[serde(default = "Uuid::new_v4")]
     pub id: Uuid,
     pub subject: String,
     pub relation: String,
