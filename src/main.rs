@@ -16,6 +16,7 @@ use crate::core::memory::MemorySystem;
 use crate::backends::in_memory::InMemoryBackend;
 use crate::config::settings::Settings;
 use crate::api::http::create_http_router;
+use crate::backends::file_store::FileStoreBackend;
 
 #[tokio::main]
 async fn main() {
@@ -25,7 +26,8 @@ async fn main() {
 
     let settings = Settings::load().expect("Failed to load configuration");
 
-    let backend = Arc::new(InMemoryBackend::new()) as Arc<dyn core::memory_store::MemoryBackend>;
+    let backend = Arc::new(FileStoreBackend::new()) as Arc<dyn core::memory_store::MemoryBackend>;
+    // let backend = Arc::new(InMemoryBackend::new()) as Arc<dyn core::memory_store::MemoryBackend>;
 
     let memory_system = Arc::new(MemorySystem::new(backend.clone()));
 
